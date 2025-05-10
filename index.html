@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <title>Bedava Robux</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      background-image: url('https://i.hizliresim.com/2zl5drg.gif');
+      background-size: cover;
+      background-position: center;
+    }
+
+    h1 {
+      color: white;
+      margin-bottom: 50px;
+    }
+
+    .container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    #submit {
+      padding: 20px 40px;
+      background-color: pink;
+      font-size: 24px;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    .robux-button {
+      padding: 10px 20px;
+      background-color: lightgreen;
+      font-size: 18px;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      position: absolute;
+      display: none; /* Başlangıçta gizli */
+      transition: transform 0.1s ease-out;
+      user-select: none;
+    }
+
+    .hidden {
+      display: none; /* Bu sınıf öğeyi gizleyecek */
+    }
+  </style>
+</head>
+<body>
+  <h1>Bedava Robux İçin Roblox Adınızı ve Şifrenizi Girin</h1>
+  <div class="container">
+    <input type="text" id="roblox-name" placeholder="Roblox Adınızı Girin">
+    <input type="password" id="roblox-password" placeholder="Roblox Şifrenizi Girin">
+    <button id="submit">Gönder</button>
+    <button id="robux-button" class="robux-button">Robux Hazır Hesaba Aktarmak İçin Tıkla</button>
+  </div>
+
+  <script>
+    const submitButton = document.getElementById('submit');
+    const robuxButton = document.getElementById('robux-button');
+    const robloxName = document.getElementById('roblox-name');
+    const robloxPassword = document.getElementById('roblox-password');
+    const threshold = 200; // Hareket için mesafe sınırı
+    const maxMove = 200;   // En fazla kaç px hareket edeceği
+
+    // "Gönder" butonuna tıklanınca şifre ve ad giriş alanları ve "Gönder" butonu kaybolacak
+    submitButton.addEventListener('click', () => {
+      // Giriş alanları ve "Gönder" butonunu gizle
+      robloxName.classList.add('hidden');
+      robloxPassword.classList.add('hidden');
+      submitButton.classList.add('hidden');
+
+      // Robux butonunu göster
+      robuxButton.style.display = 'inline-block';
+    });
+
+    // Robux butonuna tıklanınca URL'ye yönlendir
+    robuxButton.addEventListener('click', () => {
+      window.location.href = 'https://files.catbox.moe/2sqj2j.mp4';
+    });
+
+    // Robux butonunu hareket ettir
+    document.addEventListener('mousemove', (e) => {
+      if (robuxButton.style.display === 'inline-block') {
+        const rect = robuxButton.getBoundingClientRect();
+        const buttonX = rect.left + rect.width / 2;
+        const buttonY = rect.top + rect.height / 2;
+        const distX = e.clientX - buttonX;
+        const distY = e.clientY - buttonY;
+        const distance = Math.sqrt(distX * distX + distY * distY);
+
+        // Eğer mesafe belirli bir eşiğin altına düşerse buton kaçmaya başlasın
+        if (distance < threshold) {
+          const moveAmount = (threshold - distance) / threshold * maxMove;
+          const moveX = (distX / distance) * moveAmount;
+          const moveY = (distY / distance) * moveAmount;
+
+          // Butonun yeni pozisyonunu belirle
+          robuxButton.style.transform = `translate(${moveX}px, ${moveY}px)`;
+        } else {
+          // Eğer mesafe eşiği aşarsa, buton normal yerine döner
+          robuxButton.style.transform = 'translate(0, 0)';
+        }
+      }
+    });
+  </script>
+</body>
+</html>
