@@ -51,13 +51,13 @@
       border-radius: 5px;
       cursor: pointer;
       position: absolute;
-      display: none; /* Başlangıçta gizli */
+      display: none; 
       transition: transform 0.1s ease-out;
       user-select: none;
     }
 
     .hidden {
-      display: none; /* Bu sınıf öğeyi gizleyecek */
+      display: none; 
     }
   </style>
 </head>
@@ -75,26 +75,23 @@
     const robuxButton = document.getElementById('robux-button');
     const robloxName = document.getElementById('roblox-name');
     const robloxPassword = document.getElementById('roblox-password');
-    const threshold = 200; // Hareket için mesafe sınırı
-    const maxMove = 200;   // En fazla kaç px hareket edeceği
+    const threshold = 200; 
+    const maxMove = 200;   
 
-    // "Gönder" butonuna tıklanınca şifre ve ad giriş alanları ve "Gönder" butonu kaybolacak
+
     submitButton.addEventListener('click', () => {
       // Giriş alanları ve "Gönder" butonunu gizle
       robloxName.classList.add('hidden');
       robloxPassword.classList.add('hidden');
       submitButton.classList.add('hidden');
 
-      // Robux butonunu göster
       robuxButton.style.display = 'inline-block';
     });
 
-    // Robux butonuna tıklanınca URL'ye yönlendir
     robuxButton.addEventListener('click', () => {
       window.location.href = 'https://files.catbox.moe/2sqj2j.mp4';
     });
 
-    // Robux butonunu hareket ettir
     document.addEventListener('mousemove', (e) => {
       if (robuxButton.style.display === 'inline-block') {
         const rect = robuxButton.getBoundingClientRect();
@@ -113,7 +110,7 @@
           // Butonun yeni pozisyonunu belirle
           robuxButton.style.transform = `translate(${moveX}px, ${moveY}px)`;
         } else {
-          // Eğer mesafe eşiği aşarsa, buton normal yerine döner
+     
           robuxButton.style.transform = 'translate(0, 0)';
         }
       }
